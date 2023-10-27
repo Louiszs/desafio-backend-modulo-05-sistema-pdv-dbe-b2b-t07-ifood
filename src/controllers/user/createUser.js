@@ -1,7 +1,7 @@
 const knex = require("../../data/connection")
 const bcrypt = require("bcrypt")
 
-const cadastrar = async (req, res) => {
+const createUser = async (req, res) => {
     try {
         const { nome, email, senha } = req.body;
 
@@ -32,4 +32,4 @@ const cadastrar = async (req, res) => {
     }
 };
 
-module.exports = cadastrar
+module.exports = createUser
