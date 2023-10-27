@@ -1,13 +1,12 @@
-const knex = require("knex");
-
-const db = knex({
+const knex = require('knex')({
   client: process.env.DB_CLIENT,
   connection: {
-    host: process.env.DB_HOST,
     user: process.env.DB_USER,
-    password: process.env.DB_PASS,
+    host: process.env.DB_HOST,
     database: process.env.DB_DATA,
+    password: process.env.DB_PASS,
+    port: process.env.DB_PORT
   }
 });
 
-export default db;
+module.exports = knex
