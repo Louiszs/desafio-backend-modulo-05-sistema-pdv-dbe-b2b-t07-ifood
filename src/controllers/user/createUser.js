@@ -13,7 +13,7 @@ const createUser = async (req, res) => {
         const usuarioEncontrado = await knex('usuarios').where({ email }).first();
 
         if (usuarioEncontrado) {
-            return res.status(400).json({
+            return res.status(409).json({
                 mensagem: 'E-mail informado está vinculado a outro usuário.'
             });
         }
