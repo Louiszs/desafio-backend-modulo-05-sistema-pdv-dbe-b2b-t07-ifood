@@ -1,1 +1,1 @@
-module.exports = process.env.JVT_PASS;
+module.exports = process.env.JWT_PASS;
