@@ -25,12 +25,11 @@ const userLogin = async (req, res) => {
       return res.status(400).json({ mensagem: 'Email ou senha inválida' });
     }
 
-    const token = jwt.sign({ id: usuario.id }, jvt, { expiresIn: '8h' });
+    const token = jwt.sign({ id: usuario.id }, jvt, { expiresIn: process.env.JWT_EXPIRES });
     const { senha: _, ...usuarioLogado } = usuario;
 
     return res.json({ usuario: usuarioLogado, token });
   } catch (error) {
-    console.error(error.message);
     res.status(500).json({ mensagem: 'Erro interno do servidor' });
   }
 };

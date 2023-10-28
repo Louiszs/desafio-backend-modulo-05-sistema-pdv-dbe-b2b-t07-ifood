@@ -1,4 +1,4 @@
-const HttpStatusError = require("./");
+const HttpStatusError = require('./HttpStatusError');
 
 const handleError = (response, error, statusCode) => {
   if (error instanceof HttpStatusError) {
@@ -11,4 +11,4 @@ const handleError = (response, error, statusCode) => {
   }
 };
 
-export default handleError;
+module.exports = handleError;

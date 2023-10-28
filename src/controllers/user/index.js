@@ -1,6 +1,9 @@
 const createUser = require('./createUser');
-const userLogin = require('./userLogin')
+const userLogin = require('./userLogin');
+const detailUser = require('./detailUser');
+
 module.exports = {
   createUser,
-  userLogin
+  userLogin,
+  detailUser
 }

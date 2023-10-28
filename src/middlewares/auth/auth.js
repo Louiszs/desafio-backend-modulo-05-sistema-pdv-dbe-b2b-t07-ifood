@@ -1,26 +1,24 @@
 const jwt = require('jsonwebtoken');
-const jwt_pass = require("../../jwt/jwtPassword")
-const knex = require('../database/conexao');
+const jwtPassword = require('../../jwt/jwtPassword')
+const knex = require('../../data/connection');
 
 const auth = async (req, res, next) => {
-  const { authorization } = req.headers;
-
-  if (!authorization) {
-    return res.status(401).json({ mensagem: 'Não autorizado' });
-  }
-
-  const token = authorization.split(' ')[1];
-
   try {
-    const { id } = jwt.verify(token, jwt_pass);
+    const { authorization } = req.headers;
+
+    if (!authorization) {
+      return res.status(401).json({ mensagem: 'Não autorizado' });
+    }
+
+    const token = authorization.split(' ')[1];
+
+    const { id } = jwt.verify(token, jwtPassword);
 
     const usuario = await knex('usuarios').where('id', id).first();
 
     if (!usuario) {
       return res.status(401).json({ mensagem: 'Não autorizado' });
     }
-
-    req.usuario = usuario;
 
     next();
   } catch (error) {
