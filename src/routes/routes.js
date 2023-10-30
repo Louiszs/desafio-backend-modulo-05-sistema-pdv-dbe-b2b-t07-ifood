@@ -1,16 +1,22 @@
 const express = require('express');
 const routes = express();
 
-const { createUser,
+const {
+  createUser,
   listCategory,
   userLogin,
-  detailUser
+  detailUser,
 } = require("../controllers");
 
-const { auth, emailExists, verifyNameEmailPassword } = require('../middlewares');
+const {
+  auth,
+  emailExists,
+  verifyNameEmailPassword,
+  VerifyLoginEmailPass
+} = require('../middlewares');
 
 routes.post("/usuario", verifyNameEmailPassword, emailExists, createUser);
-routes.post("/login", userLogin);
+routes.post("/login", VerifyLoginEmailPass, userLogin);
 routes.use(auth);
 routes.get('/categoria', listCategory);
 routes.get('/usuario', detailUser);

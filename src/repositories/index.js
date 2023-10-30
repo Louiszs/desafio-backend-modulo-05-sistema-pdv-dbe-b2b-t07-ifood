@@ -1,7 +1,17 @@
-const { getUserPerId, encryptPassword, insertUser } = require('./user');
+const {
+  getUserPerId,
+  encryptPassword,
+  insertUser,
+  searchUserEmail,
+  verifyPassword,
+  createToken
+} = require('./user');
 
 module.exports = {
   getUserPerId,
   encryptPassword,
-  insertUser
+  insertUser,
+  searchUserEmail,
+  verifyPassword,
+  createToken
 };
