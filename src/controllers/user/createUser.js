@@ -6,7 +6,6 @@ const createUser = async (req, res) => {
     const { nome, email, senha } = req.body;
 
     const resposta = await createUserAndReturn(nome, email, senha)
-
     return res.status(201).json(resposta)
 
   } catch (error) {

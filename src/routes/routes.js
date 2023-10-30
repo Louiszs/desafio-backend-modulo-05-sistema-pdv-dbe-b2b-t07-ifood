@@ -12,11 +12,12 @@ const {
   auth,
   emailExists,
   verifyNameEmailPassword,
-  VerifyLoginEmailPass
+  VerifyLoginEmailPass,
+  userExists
 } = require('../middlewares');
 
 routes.post("/usuario", verifyNameEmailPassword, emailExists, createUser);
-routes.post("/login", VerifyLoginEmailPass, userLogin);
+routes.post("/login", userExists, VerifyLoginEmailPass, userLogin);
 routes.use(auth);
 routes.get('/categoria', listCategory);
 routes.get('/usuario', detailUser);

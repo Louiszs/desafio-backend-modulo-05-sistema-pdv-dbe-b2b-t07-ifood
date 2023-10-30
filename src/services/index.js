@@ -1,11 +1,13 @@
 const {
   getUserAndReturn,
   createUserAndReturn,
-  loginUserAndReturn
+  loginUserAndReturn,
+  sendEmail
 } = require('./user');
 
 module.exports = {
   getUserAndReturn,
   createUserAndReturn,
-  loginUserAndReturn
+  loginUserAndReturn,
+  sendEmail
 }

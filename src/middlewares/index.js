@@ -2,12 +2,14 @@ const auth = require('./auth');
 const {
   emailExists,
   verifyNameEmailPassword,
-  VerifyLoginEmailPass
+  VerifyLoginEmailPass,
+  userExists
 } = require('./user')
 
 module.exports = {
   auth,
   emailExists,
   verifyNameEmailPassword,
-  VerifyLoginEmailPass
+  VerifyLoginEmailPass,
+  userExists
 };

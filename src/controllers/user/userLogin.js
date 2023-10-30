@@ -7,8 +7,8 @@ const userLogin = async (req, res) => {
   try {
 
     const resposta = await loginUserAndReturn(email, senha)
+    return res.status(200).json(resposta);
 
-    return res.json(resposta);
   } catch (error) {
     handleError(res, error, 400);
   }

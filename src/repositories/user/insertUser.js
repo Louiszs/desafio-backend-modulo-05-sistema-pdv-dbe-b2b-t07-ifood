@@ -11,7 +11,7 @@ const insertUser = async (nome, email, senha) => {
 
     return usuarioCriado[0];
   } catch (error) {
-
+    error.message
   }
 }
 module.exports = insertUser

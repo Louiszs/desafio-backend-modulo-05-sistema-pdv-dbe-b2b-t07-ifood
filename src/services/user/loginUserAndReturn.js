@@ -1,9 +1,9 @@
 const {
   searchUserEmail,
   verifyPassword,
-  createToken
+  createToken,
 } = require('../../repositories');
-
+const sendEmail = require('./sendEmail')
 const loginUserAndReturn = async (email, senha) => {
   try {
     const usuario = await searchUserEmail(email)
@@ -11,6 +11,8 @@ const loginUserAndReturn = async (email, senha) => {
     const senhaCrypt = await verifyPassword(senha, usuario)
 
     const tokenCreated = await createToken(usuario)
+
+    sendEmail(email, "logado", "login")
 
     return tokenCreated
 
