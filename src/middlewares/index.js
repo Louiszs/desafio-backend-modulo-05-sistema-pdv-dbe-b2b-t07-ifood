@@ -1,3 +1,8 @@
 const auth = require('./auth');
+const { emailExists, verifyNameEmailPassword } = require('./user')
 
-module.exports = { auth };
+module.exports = {
+  auth,
+  emailExists,
+  verifyNameEmailPassword
+};

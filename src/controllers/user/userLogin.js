@@ -1,7 +1,8 @@
 const knex = require('../../data/connection');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const jvt = require("../../jwt/jwtPassword");
+const jvt = require("../../jwt/jwtPassword")
+const { handleError } = require('../../error');
 
 const userLogin = async (req, res) => {
   const { email, senha } = req.body;
@@ -30,7 +31,7 @@ const userLogin = async (req, res) => {
 
     return res.json({ usuario: usuarioLogado, token });
   } catch (error) {
-    res.status(500).json({ mensagem: 'Erro interno do servidor' });
+    handleError(res, error, 400);
   }
 };
 

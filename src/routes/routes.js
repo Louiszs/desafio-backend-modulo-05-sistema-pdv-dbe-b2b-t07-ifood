@@ -2,14 +2,14 @@ const express = require('express');
 const routes = express();
 
 const { createUser,
-        listCategory,
-        userLogin,
-        detailUser
-      } = require("../controllers");
+  listCategory,
+  userLogin,
+  detailUser
+} = require("../controllers");
 
-const { auth } = require('../middlewares');
+const { auth, emailExists, verifyNameEmailPassword } = require('../middlewares');
 
-routes.post("/usuario", createUser);
+routes.post("/usuario", verifyNameEmailPassword, emailExists, createUser);
 routes.post("/login", userLogin);
 routes.use(auth);
 routes.get('/categoria', listCategory);

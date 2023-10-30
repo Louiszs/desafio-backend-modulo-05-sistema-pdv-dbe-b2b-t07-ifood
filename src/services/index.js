@@ -1,5 +1,6 @@
-const { getUserAndReturn } = require('./user');
+const { getUserAndReturn, createUserAndReturn } = require('./user');
 
 module.exports = {
-  getUserAndReturn
+  getUserAndReturn,
+  createUserAndReturn
 }
