@@ -1,18 +1,27 @@
 const express = require('express');
 const routes = express();
 
-const { createUser,
-        listCategory,
-        userLogin,
-        detailUser
-      } = require("../controllers");
+const {
+  createUser,
+  listCategory,
+  userLogin,
+  detailUser,
+  updateUser
+} = require("../controllers");
 
-const { auth } = require('../middlewares');
+const {
+  auth,
+  emailExists,
+  verifyNameEmailPassword,
+  VerifyLoginEmailPass,
+  userExists
+} = require('../middlewares');
 
-routes.post("/usuario", createUser);
-routes.post("/login", userLogin);
+routes.post("/usuario", verifyNameEmailPassword, emailExists, createUser);
+routes.post("/login", userExists, VerifyLoginEmailPass, userLogin);
 routes.use(auth);
 routes.get('/categoria', listCategory);
 routes.get('/usuario', detailUser);
+routes.put('/usuario', verifyNameEmailPassword, updateUser)
 
 module.exports = routes;

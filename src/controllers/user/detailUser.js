@@ -1,11 +1,12 @@
 const { handleError } = require('../../error');
-const { getUserAndReturn } = require('../../services');
+const { getUserAndReturn, sendEmail } = require('../../services');
 
 const detailUser = async (req, res) => {
   try {
     const { authorization } = req.headers;
 
     const user = await getUserAndReturn(authorization);
+    sendEmail
 
     return res.json(user);
   } catch (error) {
