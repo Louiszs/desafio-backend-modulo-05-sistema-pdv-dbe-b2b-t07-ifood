@@ -2,7 +2,7 @@
   "name": "desafio-backend-modulo-05-sistema-pdv-dbe-b2b-t07-ifood",
   "version": "1.0.0",
   "description": "![](https://i.imgur.com/xG74tOh.png)",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "dev": "nodemon ./src/server.js"
   },
