@@ -3,16 +3,16 @@ const {
   verifyPassword,
   createToken,
 } = require('../../repositories');
-const sendEmail = require('./sendEmail')
+//? Implementação de e-mail futura const sendEmail = require('./sendEmail')
 const loginUserAndReturn = async (email, senha) => {
   try {
-    const usuario = await searchUserEmail(email)
+    const user = await searchUserEmail(email)
 
-    const senhaCrypt = await verifyPassword(senha, usuario)
+    await verifyPassword(senha, user)
 
-    const tokenCreated = await createToken(usuario)
+    const tokenCreated = await createToken(user)
 
-    sendEmail(email, "logado", "login")
+    //? Implementação de e-mail futura sendEmail(email, "logado", "login")
 
     return tokenCreated
 
