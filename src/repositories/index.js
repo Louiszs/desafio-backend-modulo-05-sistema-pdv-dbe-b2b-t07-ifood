@@ -4,7 +4,8 @@ const {
   insertUser,
   searchUserEmail,
   verifyPassword,
-  createToken
+  createToken,
+  refreshUser
 } = require('./user');
 
 module.exports = {
@@ -13,5 +14,6 @@ module.exports = {
   insertUser,
   searchUserEmail,
   verifyPassword,
-  createToken
+  createToken,
+  refreshUser
 };
