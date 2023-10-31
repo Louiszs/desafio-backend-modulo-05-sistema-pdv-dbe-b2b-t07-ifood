@@ -1,21 +1,14 @@
-const { verifyPassword } = require("../../repositories");
+const { handleError } = require("../../error");
+const { LoginUserSchema } = require("../../schemas/user");
 
-const VerifyLoginEmailPass = (req, res, next) => {
+const VerifyLoginEmailPass = async (req, res, next) => {
   try {
-    const { email, senha } = req.body;
-
-    if (!email || !senha) {
-      return res.status(400).json({
-        mensagem: 'Preencha os campos obrigatórios: email e senha'
-      });
-    }
+    await LoginUserSchema.validate(req.body);
 
     next();
-
   } catch (error) {
-    return error.message;
+    handleError(res, error, 400);
   }
 };
 
 module.exports = VerifyLoginEmailPass;
-

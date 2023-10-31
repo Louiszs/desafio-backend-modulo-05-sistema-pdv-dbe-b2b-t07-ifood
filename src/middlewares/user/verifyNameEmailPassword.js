@@ -1,17 +1,13 @@
+const { handleError } = require("../../error");
+const { UserSchema } = require("../../schemas");
 
-const verifyNameEmailPassword = (req, res, next) => {
+const verifyNameEmailPassword = async (req, res, next) => {
   try {
+    await UserSchema.validate(req.body);
 
-    const { nome, email, senha } = req.body;
-
-    if (!nome || !email || !senha) {
-      return res.status(400).json({
-        mensagem: 'Preencha os campos obrigatórios: nome, email e senha'
-      });
-    }
     next()
   } catch (error) {
-    return error.message;
+    handleError(res, error, 400)
   }
 }
 

@@ -2,12 +2,14 @@ const {
   getUserAndReturn,
   createUserAndReturn,
   loginUserAndReturn,
-  sendEmail
+  sendEmail,
+  updateUserAndConfirm
 } = require('./user');
 
 module.exports = {
   getUserAndReturn,
   createUserAndReturn,
   loginUserAndReturn,
-  sendEmail
+  sendEmail,
+  updateUserAndConfirm
 }

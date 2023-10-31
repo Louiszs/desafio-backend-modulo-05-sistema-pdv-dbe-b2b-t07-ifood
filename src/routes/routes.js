@@ -6,6 +6,7 @@ const {
   listCategory,
   userLogin,
   detailUser,
+  updateUser
 } = require("../controllers");
 
 const {
@@ -21,5 +22,6 @@ routes.post("/login", userExists, VerifyLoginEmailPass, userLogin);
 routes.use(auth);
 routes.get('/categoria', listCategory);
 routes.get('/usuario', detailUser);
+routes.put('/usuario', verifyNameEmailPassword, updateUser)
 
 module.exports = routes;

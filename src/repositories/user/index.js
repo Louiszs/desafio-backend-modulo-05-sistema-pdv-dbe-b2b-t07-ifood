@@ -4,6 +4,7 @@ const insertUser = require('./insertUser');
 const searchUserEmail = require('./searchUserEmail');
 const verifyPassword = require('./verifyPassword');
 const createToken = require('./createToken');
+const refreshUser = require('./refreshUser');
 
 module.exports = {
   getUserPerId,
@@ -11,5 +12,6 @@ module.exports = {
   insertUser,
   searchUserEmail,
   verifyPassword,
-  createToken
+  createToken,
+  refreshUser
 };
