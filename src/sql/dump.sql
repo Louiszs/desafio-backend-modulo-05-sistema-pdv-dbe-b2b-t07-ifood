@@ -19,3 +19,44 @@ insert into categorias (descricao) values
   ('Moda'),
   ('Bebê'),
   ('Games');
+
+CREATE TABLE produtos (
+    id SERIAL PRIMARY KEY,
+    descricao VARCHAR(255) NOT NULL,
+    quantidade_estoque INTEGER NOT NULL,
+    valor FLOAT NOT NULL,
+    categoria_id INTEGER REFERENCES categorias(id) NOT NULL
+);
+
+CREATE TABLE clientes (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    cpf VARCHAR(14) UNIQUE NOT NULL,
+    cep VARCHAR(10) NOT NULL,
+    rua VARCHAR(255) NOT NULL,
+    numero VARCHAR(20) NOT NULL,
+    bairro VARCHAR(100) NOT NULL,
+    cidade VARCHAR(100) NOT NULL,
+    estado VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE pedidos (
+    id SERIAL PRIMARY KEY,
+    cliente_id integer references clientes(id),
+    observacao TEXT,
+    valor_total NUMERIC
+);
+
+CREATE TABLE pedido_produtos (
+    id SERIAL PRIMARY KEY,
+    pedido_id integer REFERENCES pedidos(id),
+    produto_id integer references produtos(id),
+    quantidade_produto INTEGER,
+    valor_produto NUMERIC
+);
+
+CREATE TABLE produto_imagem (
+    id SERIAL PRIMARY KEY,
+    produto_imagem text
+);
