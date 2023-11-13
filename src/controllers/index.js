@@ -15,6 +15,8 @@ const {
   listClients,
 } = require("./clients/clients");
 
+const { requestsList, requestRegister } = require("./requests/requests");
+
 const { listCategory } = require("./categories");
 
 module.exports = {
@@ -32,4 +34,6 @@ module.exports = {
   editClient,
   insertClient,
   listClients,
+  requestsList,
+  requestRegister,
 };

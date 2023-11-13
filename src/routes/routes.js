@@ -16,6 +16,8 @@ const {
   editClient,
   insertClient,
   listClients,
+  requestRegister,
+  requestsList,
 } = require("../controllers");
 
 const {
@@ -43,5 +45,8 @@ routes.post("/cliente", insertClient);
 routes.put("/cliente/:id", editClient);
 routes.get("/cliente", listClients);
 routes.get("/cliente/:id", detailClient);
+
+routes.post("/pedido", requestRegister);
+routes.get("/pedido", requestsList);
 
 module.exports = routes;

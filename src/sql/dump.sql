@@ -40,3 +40,23 @@ CREATE TABLE clientes (
     cidade VARCHAR(100) NOT NULL,
     estado VARCHAR(100) NOT NULL
 );
+
+CREATE TABLE pedidos (
+    id SERIAL PRIMARY KEY,
+    cliente_id integer references clientes(id),
+    observacao TEXT,
+    valor_total NUMERIC
+);
+
+CREATE TABLE pedido_produtos (
+    id SERIAL PRIMARY KEY,
+    pedido_id integer REFERENCES pedidos(id),
+    produto_id integer references produtos(id),
+    quantidade_produto INTEGER,
+    valor_produto NUMERIC
+);
+
+CREATE TABLE produto_imagem (
+    id SERIAL PRIMARY KEY,
+    produto_imagem text
+);
