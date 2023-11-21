@@ -33,17 +33,17 @@ CREATE TABLE clientes (
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     cpf VARCHAR(14) UNIQUE NOT NULL,
-    cep VARCHAR(10) NOT NULL,
-    rua VARCHAR(255) NOT NULL,
-    numero VARCHAR(20) NOT NULL,
-    bairro VARCHAR(100) NOT NULL,
-    cidade VARCHAR(100) NOT NULL,
-    estado VARCHAR(100) NOT NULL
+    cep VARCHAR(10),
+    rua VARCHAR(255),
+    numero VARCHAR(20),
+    bairro VARCHAR(100),
+    cidade VARCHAR(100),
+    estado VARCHAR(100)
 );
 
 CREATE TABLE pedidos (
     id SERIAL PRIMARY KEY,
-    cliente_id integer references clientes(id),
+    cliente_id integer,
     observacao TEXT,
     valor_total NUMERIC
 );
