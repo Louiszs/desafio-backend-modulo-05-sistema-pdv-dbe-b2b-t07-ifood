@@ -30,7 +30,7 @@ const deleteImage = async (path) => {
   await s3
     .deleteObject({
       Bucket: process.env.BUCKET_NAME,
-      Key: path,
+      Key: process.env.KEY_ID,
     })
     .promise();
 };

@@ -175,8 +175,6 @@ const editProduct = async (req, res) => {
 
   const { id } = req.params;
 
-  let produto_imagem = undefined;
-
   if (req.file) {
     const { originalname, mimetype, buffer } = req.file;
 
@@ -201,7 +199,6 @@ const editProduct = async (req, res) => {
           quantidade_estoque,
           valor,
           categoria_id,
-          produto_imagem,
         })
         .where({ id });
       if (!product) {
@@ -214,13 +211,14 @@ const editProduct = async (req, res) => {
         mimetype
       );
 
-      product = await knex("produtos")
+      product = await knex("produto_imagem")
         .update({
           produto_imagem: productImage.url,
         })
         .where({ id })
         .returning("*");
 
+      console.log(product);
       return res.status(200).json(product[0]);
     } catch (error) {
       return res.status(500).json({ mensagem: "Erro interno do servidor" });
@@ -240,8 +238,8 @@ const editProduct = async (req, res) => {
         return res.status(404).json("A categoria informada não existe.");
       }
 
-      let product = await knex("produtos")
-        .insert({
+      const product = await knex("produtos")
+        .update({
           descricao,
           quantidade_estoque,
           valor,

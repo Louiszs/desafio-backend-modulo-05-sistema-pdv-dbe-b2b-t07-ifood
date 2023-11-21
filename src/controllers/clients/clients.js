@@ -24,7 +24,7 @@ const insertClient = async (req, res) => {
       return res.status(400).json("O cliente não foi cadastrado.");
     }
 
-    return res.status(200).json("O cliente foi cadastrado com sucesso!");
+    return res.status(201).json("O cliente foi cadastrado com sucesso!");
   } catch (error) {
     return res.status(500).json({ mensagem: "Erro interno do servidor" });
   }
